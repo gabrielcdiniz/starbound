@@ -9,10 +9,18 @@
   },
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "npx prisma generate --no-engine && next build",
     "start": "next start",
     "lint": "eslint --fix",
-    "prepare": "npx husky"
+    "prepare": "npx husky",
+    "prisma:generate": "npx prisma generate",
+    "prisma:migrate": "npx prisma migrate dev",
+    "prisma:deploy": "npx prisma migrate deploy",
+    "prisma:studio": "npx prisma studio",
+    "prisma:reset": "npx prisma migrate reset",
+    "prisma:seed": "npx prisma db seed",
+    "prisma:push": "npx prisma db push",
+    "prisma:pull": "npx prisma db pull"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
@@ -20,6 +28,7 @@
     "@hookform/resolvers": "^3.9.1",
     "@mui/joy": "^5.0.0-beta.48",
     "@phosphor-icons/react": "^2.1.7",
+    "@prisma/client": "^5.22.0",
     "next": "15.0.2",
     "next-intl": "^3.24.0",
     "react": "19.0.0-rc-02c0e824-20241028",

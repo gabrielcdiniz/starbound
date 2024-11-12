@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model List {
+  // common fields
+
+  id String @id @default(cuid())
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  // specific fields
+
+  totalPrice Float     @default(0) @map("total_price")
+  isFinished Boolean   @default(false) @map("is_finished")
+  finishedAt DateTime? @map("finished_at")
+
+  // relations
+
+  listItems ListItem[] @relation("ListItems")
+
+  // indexes
+
+  @@index([deletedAt], name: "list_deleted_at_index")
+  @@index([isFinished, finishedAt], name: "list_is_finished_finished_at_index")
+  @@map("lists")
+}
+
+model ListItem {
+  // common fields
+
+  id String @id @default(cuid())
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  // specific fields
+
+  position Int    @default(autoincrement())
+  name     String
+  price    Float
+  quantity Int
+
+  // relations
+
+  list   List   @relation("ListItems", fields: [listId], references: [id])
+  listId String
+
+  // indexes
+
+  @@index([listId, name], name: "list_item_list_id_name_index")
+  @@index([listId, position], name: "list_item_list_id_position_index")
+  @@map("couples")
+}
