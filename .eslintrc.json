@@ -1,0 +1,24 @@
+{
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "plugins": ["eslint-plugin-import-helpers"],
+  "rules": {
+    "import-helpers/order-imports": [
+      "error",
+      {
+        "newlinesBetween": "always",
+        "groups": [
+          ["/^react/", "/^(react-).*/"],
+          ["/^next/", "/^(next//)/", "/^(next-).*/"],
+          ["/^@mui/"],
+          "module",
+          "/^@//",
+          ["parent", "sibling", "index"]
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "ignoreCase": true
+        }
+      }
+    ]
+  }
+}
