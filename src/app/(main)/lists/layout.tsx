@@ -2,14 +2,15 @@ import { Fragment, type ReactNode } from 'react';
 
 import { MobileHeader } from '@/layout/mobile';
 
-type HomeLayoutProps = Readonly<{
+type ListsLayoutProps = Readonly<{
   children: ReactNode;
+  header: ReactNode;
 }>;
 
-export default function HomeLayout({ children }: HomeLayoutProps) {
+export default function ListsLayout({ children, header }: ListsLayoutProps) {
   return (
     <Fragment>
-      <MobileHeader />
+      <MobileHeader>{header}</MobileHeader>
 
       {children}
     </Fragment>

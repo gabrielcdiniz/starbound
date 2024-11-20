@@ -4,6 +4,8 @@ import { type ReactNode } from 'react';
 
 import dynamic from 'next/dynamic';
 
+import { MobileHeader } from '@/layout/mobile';
+
 export const MobileAppBar = dynamic(
   async () => (await import('@/layout/mobile')).MobileAppBar,
   { ssr: false },
@@ -21,7 +23,11 @@ type HomeLayoutProps = Readonly<{
 export default function MainLayout({ children }: HomeLayoutProps) {
   return (
     <>
-      <MobileContent>{children}</MobileContent>
+      <MobileContent>
+        <MobileHeader />
+
+        {children}
+      </MobileContent>
 
       <MobileAppBar />
     </>
