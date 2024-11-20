@@ -14,6 +14,11 @@ export function MobileAppBar() {
   const pathname = usePathname();
   const t = useTranslations('Navigation');
 
+  console.log('pathname', {
+    house: pathname === '/',
+    list: pathname === '/lists',
+  });
+
   return (
     <TabsContainer component="footer">
       <Tabs variant="outlined" size="lg" aria-label="Bottom Navigation">
@@ -28,8 +33,8 @@ export function MobileAppBar() {
 
           <Tab
             icon={<IconBase icon={ListNumbers} />}
-            href="/list"
-            active={pathname === '/list'}
+            href="/lists"
+            active={pathname === '/lists'}
           >
             {t('List')}
           </Tab>

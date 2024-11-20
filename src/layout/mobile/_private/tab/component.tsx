@@ -16,16 +16,16 @@ type TabProps = Readonly<{
 
 export function Tab({ icon, children, href, active = false }: TabProps) {
   return (
-    <TabMaterialUI
-      disableIndicator
-      orientation="vertical"
-      color={active ? 'primary' : 'neutral'}
-    >
-      <TabLink href={href} underline="none">
+    <TabLink href={href} underline="none">
+      <TabMaterialUI
+        disableIndicator
+        orientation="vertical"
+        color={active ? 'primary' : 'neutral'}
+      >
         <ListItemDecorator>{icon}</ListItemDecorator>
 
         <Info>{children}</Info>
-      </TabLink>
-    </TabMaterialUI>
+      </TabMaterialUI>
+    </TabLink>
   );
 }

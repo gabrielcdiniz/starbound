@@ -29,7 +29,6 @@ export const Tabs = styled(TabsMaterialUI)(({ theme }) => ({
 
     [`&:not(.${tabClasses.selected}):not(:hover)`]: {
       opacity: 0.7,
-      backgroundColor: 'transparent',
     },
 
     [`&:not(.${tabClasses.selected}):hover`]: {
