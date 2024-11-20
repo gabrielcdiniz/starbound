@@ -23,6 +23,13 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     <AppProviders>
       <NextIntlClientProvider messages={messages}>
         <html lang={locale}>
+          <head>
+            <meta
+              name="viewport"
+              content="initial-scale=1, width=device-width"
+            />
+          </head>
+
           <body>{children}</body>
         </html>
       </NextIntlClientProvider>

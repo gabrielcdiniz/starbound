@@ -33,8 +33,10 @@ export const GlobalStyles = () => (
       },
 
       'html, body': {
-        minHeight: '100vh',
-        minWidth: '100vw',
+        minHeight: '100dvh',
+        minWidth: '100dvw',
+        height: '100dvh',
+        width: '100dvw',
         overflowX: 'hidden',
         overflowY: 'auto',
         margin: 0,

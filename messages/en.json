@@ -1,1 +1,17 @@
-{}
+{
+  "Navigation": {
+    "Home": "Home",
+    "List": "List"
+  },
+
+  "Components": {
+    "Sections": {
+      "Lists": {
+        "NoLists": "No lists"
+      },
+      "LastLists": {
+        "LastLists": "Last lists"
+      }
+    }
+  }
+}
