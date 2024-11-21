@@ -11,7 +11,7 @@ export type SectionBaseProps = Readonly<{
 
 export function SectionBase({ title, children }: SectionBaseProps) {
   return (
-    <StackStyled>
+    <StackStyled component="section">
       {title}
 
       <Divider />
