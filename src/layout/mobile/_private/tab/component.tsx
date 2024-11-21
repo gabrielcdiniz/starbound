@@ -21,6 +21,7 @@ export function Tab({ icon, children, href, active = false }: TabProps) {
         disableIndicator
         orientation="vertical"
         color={active ? 'primary' : 'neutral'}
+        value={href}
       >
         <ListItemDecorator>{icon}</ListItemDecorator>
 
