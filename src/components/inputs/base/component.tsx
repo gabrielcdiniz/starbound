@@ -8,7 +8,8 @@ import { Small } from '@/components/texts';
 export type InputBaseProps = Readonly<{
   error?: string;
 }> &
-  Omit<ControllerProps, 'render'> &
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Omit<ControllerProps<any>, 'render'> &
   Omit<InputProps, 'defaultValue' | 'error'>;
 
 export const InputBase = forwardRef<HTMLInputElement, InputBaseProps>(
@@ -24,6 +25,7 @@ export const InputBase = forwardRef<HTMLInputElement, InputBaseProps>(
           render={({ field }) => (
             <Input
               size="lg"
+              autoComplete="off"
               sx={{ height: '48px' }}
               {...field}
               {...inputProps}

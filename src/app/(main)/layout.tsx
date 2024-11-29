@@ -1,8 +1,11 @@
 'use client';
 
-import { type ReactNode } from 'react';
+import { useEffect, type ReactNode } from 'react';
 
 import dynamic from 'next/dynamic';
+
+import { useLists } from '@/hooks/lists';
+import { MobileHeader } from '@/layout/mobile';
 
 export const MobileAppBar = dynamic(
   async () => (await import('@/layout/mobile')).MobileAppBar,
@@ -16,12 +19,23 @@ export const MobileContent = dynamic(
 
 type HomeLayoutProps = Readonly<{
   children: ReactNode;
+  header: ReactNode;
 }>;
 
-export default function MainLayout({ children }: HomeLayoutProps) {
+export default function MainLayout({ children, header }: HomeLayoutProps) {
+  const { getCurrentList } = useLists();
+
+  useEffect(() => {
+    getCurrentList();
+  }, [getCurrentList]);
+
   return (
     <>
-      <MobileContent>{children}</MobileContent>
+      <MobileContent>
+        <MobileHeader>{header}</MobileHeader>
+
+        {children}
+      </MobileContent>
 
       <MobileAppBar />
     </>

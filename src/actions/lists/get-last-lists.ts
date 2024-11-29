@@ -7,9 +7,7 @@ export async function getLastLists() {
     const lists = await prisma.list.findMany({
       take: 3,
       where: {
-        finishedAt: {
-          not: null,
-        },
+        isFinished: true,
       },
       orderBy: {
         finishedAt: 'desc',

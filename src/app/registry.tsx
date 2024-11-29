@@ -51,7 +51,7 @@ export const GlobalStyles = () => (
 );
 
 export const CssVarsProvider = ({ children }: CssVarsProviderProps) => (
-  <CssVarsProviderJoy theme={SkyTheme} defaultMode="light">
+  <CssVarsProviderJoy theme={SkyTheme} defaultMode="dark">
     <GlobalStyles />
 
     <CssBaseline />
