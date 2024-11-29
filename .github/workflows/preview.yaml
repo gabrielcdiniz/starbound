@@ -1,10 +1,4 @@
 name: Vercel Preview Deployment
-env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-
-  DATABASE_URL: ${{ secrets.DATABASE_URL }}
-  DIRECTUS_URL: ${{ secrets.DIRECTUS_URL }}
 
 on:
   push:
@@ -12,7 +6,8 @@ on:
       - develop
 
 jobs:
-  Run-Migrations:
+  migrations:
+    environment: staging
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,8 +25,10 @@ jobs:
           DIRECT_URL: ${{ secrets.DIRECT_URL }}
         run: npm run prisma:deploy
 
-  Deploy-Preview:
-    needs: [Run-Migrations]
+  deploy:
+    environment: staging
+    name: Deployment
+    needs: [migrations]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
