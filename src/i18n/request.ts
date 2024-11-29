@@ -4,7 +4,7 @@ import { getRequestConfig } from 'next-intl/server';
 import { cookies, headers } from 'next/headers';
 
 export default getRequestConfig(async () => {
-  const defaultLang = 'pt-BR';
+  const defaultLang = 'en-US';
 
   const langs = (await headers()).get('Accept-Language');
   const lang = langs?.split(',')[0].split(';')[0];
