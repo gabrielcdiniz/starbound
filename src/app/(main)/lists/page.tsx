@@ -1,11 +1,5 @@
-import { Fragment } from 'react';
+import { PageLists } from '@/components/pages';
 
-import { Jumbo } from '@/components/headings';
-
-export default function ListsPage() {
-  return (
-    <Fragment>
-      <Jumbo>Lists</Jumbo>
-    </Fragment>
-  );
+export default async function ListsPage() {
+  return <PageLists />;
 }

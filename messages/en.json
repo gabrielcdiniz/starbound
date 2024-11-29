@@ -12,6 +12,94 @@
       "LastLists": {
         "LastLists": "Last lists"
       }
+    },
+    "Lists": {
+      "Header": {
+        "TotalValue": "total value",
+        "FinalizeList": "finalize list"
+      },
+      "Table": {
+        "Header": {
+          "Name": "name",
+          "UnitPrice": "unit price",
+          "Qty": "qty",
+          "Actions": "actions"
+        },
+        "Body": {
+          "NoItems": "No items"
+        },
+        "RowActions": {
+          "Edit": "edit",
+          "Delete": "delete"
+        }
+      },
+      "Actions": {
+        "AddItem": "add item",
+        "ClearList": "clear list"
+      },
+      "Modals": {
+        "AddItem": {
+          "Title": "add item",
+          "Name": "name",
+          "UnitPrice": "unit price",
+          "Quantity": "quantity",
+          "Save": "save",
+          "Cancel": "cancel"
+        },
+        "EditItem": {
+          "Title": "add item",
+          "Name": "name",
+          "UnitPrice": "unit price",
+          "Quantity": "quantity",
+          "Save": "save",
+          "Cancel": "cancel"
+        },
+        "ClearList": {
+          "Title": "clear list",
+          "Message": "Are you sure you want to clear the list ?",
+          "Confirm": "confirm",
+          "Cancel": "cancel"
+        },
+        "FinalizeList": {
+          "Title": "finalize list",
+          "Message": "Are you sure you want to finalize the list ?",
+          "Confirm": "confirm",
+          "Cancel": "cancel"
+        }
+      },
+      "Forms": {
+        "AddItem": {
+          "Name": {
+            "Placeholder": "Enter the item name"
+          },
+          "UnitPrice": {
+            "Placeholder": "Enter the unit price"
+          },
+          "Quantity": {
+            "Placeholder": "Enter the quantity"
+          },
+          "Save": "save",
+          "Cancel": "cancel"
+        },
+        "EditItem": {
+          "Name": {
+            "Placeholder": "Enter the item name"
+          },
+          "UnitPrice": {
+            "Placeholder": "Enter the unit price"
+          },
+          "Quantity": {
+            "Placeholder": "Enter the quantity"
+          },
+          "Save": "save",
+          "Cancel": "cancel"
+        }
+      }
     }
+  },
+
+  "Validations": {
+    "Required": "required field",
+    "GreaterThan": "must be greater than {value}"
   }
 }

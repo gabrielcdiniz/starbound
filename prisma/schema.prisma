@@ -44,7 +44,7 @@ model ListItem {
 
   // specific fields
 
-  position Int    @default(autoincrement())
+  position Int
   name     String
   price    Float
   quantity Int

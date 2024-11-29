@@ -1,18 +1,23 @@
 import { Fragment, type ReactNode } from 'react';
 
-import { MobileHeader } from '@/layout/mobile';
-
 type ListsLayoutProps = Readonly<{
   children: ReactNode;
   header: ReactNode;
+  modal: ReactNode;
 }>;
 
-export default function ListsLayout({ children, header }: ListsLayoutProps) {
+export default async function ListsLayout({
+  children,
+  header,
+  modal,
+}: ListsLayoutProps) {
   return (
     <Fragment>
-      <MobileHeader>{header}</MobileHeader>
+      {header}
 
       {children}
+
+      {modal}
     </Fragment>
   );
 }

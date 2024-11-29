@@ -26,4 +26,5 @@ export const HeaderContent = styled(Sheet)({
 
 export const HeaderSpacer = styled(Box)({
   height: 64,
+  minHeight: 64,
 });

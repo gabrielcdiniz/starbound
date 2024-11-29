@@ -4,6 +4,8 @@ import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 
+import { ListsStoreProvider } from '@/stores/lists';
+
 import { AppProviders } from './providers';
 
 export const metadata: Metadata = {
@@ -22,16 +24,18 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <AppProviders>
       <NextIntlClientProvider messages={messages}>
-        <html lang={locale}>
-          <head>
-            <meta
-              name="viewport"
-              content="initial-scale=1, width=device-width"
-            />
-          </head>
+        <ListsStoreProvider>
+          <html lang={locale}>
+            <head>
+              <meta
+                name="viewport"
+                content="initial-scale=1, width=device-width"
+              />
+            </head>
 
-          <body>{children}</body>
-        </html>
+            <body>{children}</body>
+          </html>
+        </ListsStoreProvider>
       </NextIntlClientProvider>
     </AppProviders>
   );

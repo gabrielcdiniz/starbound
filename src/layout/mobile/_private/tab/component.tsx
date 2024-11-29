@@ -11,17 +11,18 @@ type TabProps = Readonly<{
   icon: ReactNode;
   children: ReactNode;
   href: string;
+  value: string;
   active: boolean;
 }>;
 
-export function Tab({ icon, children, href, active = false }: TabProps) {
+export function Tab({ icon, children, href, value, active = false }: TabProps) {
   return (
-    <TabLink href={href} underline="none">
+    <TabLink href={href} underline="none" prefetch={false}>
       <TabMaterialUI
         disableIndicator
         orientation="vertical"
         color={active ? 'primary' : 'neutral'}
-        value={href}
+        value={value}
       >
         <ListItemDecorator>{icon}</ListItemDecorator>
 

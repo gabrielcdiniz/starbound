@@ -6,7 +6,7 @@ export const ContentContainer = styled(Box)({
   flexDirection: 'column',
   justifyContent: 'start',
   alignItems: 'center',
-  padding: '0px 16px 81px 16px',
+  padding: '16px 16px calc(85px + 16px) 16px',
   gap: '16px',
   overflow: 'auto',
 });
