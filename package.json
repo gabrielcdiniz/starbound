@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gabrielcdiniz/starbound"
+  },
+  "author": {
+    "name": "Gabriel C. Diniz"
+  },
   "engines": {
     "node": "^v20",
     "npm": "^v10"
