@@ -49,10 +49,14 @@ export function useLists() {
   }, [setLastLists, setIsLoadingLastLists]);
 
   const getCurrentList = useCallback(async () => {
+    console.log('getCurrentList - init');
+
     try {
       setIsLoadingLists(true);
 
       const { data, error } = await getActiveList();
+
+      console.log('getCurrentList - data, error', { data, error });
 
       if (!error) {
         setCurrentList(data!);

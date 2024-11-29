@@ -5,6 +5,8 @@ import type { List } from '@prisma/client';
 import { prisma } from '@/lib/db';
 
 export async function getActiveList() {
+  console.log('getActiveList - init');
+
   try {
     let activeList: List | null = null;
 
@@ -14,16 +16,22 @@ export async function getActiveList() {
       },
     });
 
+    console.log('getActiveList - activeList', activeList);
+
     if (!activeList) {
       const newList = await prisma.list.create({
         data: {},
       });
 
       activeList = newList;
+
+      console.log('getActiveList - newList', newList);
     }
 
     return { data: activeList };
   } catch (error) {
+    console.error('getActiveList - error', error);
+
     return { error };
   }
 }
