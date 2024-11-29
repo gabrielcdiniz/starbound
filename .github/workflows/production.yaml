@@ -4,6 +4,9 @@ env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  DIRECTUS_URL: ${{ secrets.DIRECTUS_URL }}
+
 on:
   push:
     branches:
@@ -30,6 +33,7 @@ jobs:
             @semantic-release/changelog@6.0.3
             @semantic-release/commit-analyzer@13.0.0
             @semantic-release/release-notes-generator@14.0.1
+            @semantic-release/github@11.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.STARBOUND_DEPLOY_TOKEN }}
 
@@ -48,6 +52,9 @@ jobs:
         run: npm ci --force
 
       - name: Run Migrations
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
         run: npm run prisma:deploy
 
   deploy:
@@ -55,7 +62,7 @@ jobs:
     needs: [release, migrations]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Install Vercel CLI
         run: npm install --global vercel@latest

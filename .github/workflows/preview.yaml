@@ -3,6 +3,9 @@ env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  DIRECTUS_URL: ${{ secrets.DIRECTUS_URL }}
+
 on:
   push:
     branches:
@@ -22,6 +25,9 @@ jobs:
         run: npm ci --force
 
       - name: Run Migrations
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
         run: npm run prisma:deploy
 
   Deploy-Preview:
