@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Starbound
 
-## Getting Started
+## Descrição
 
-First, run the development server:
+O Starbound é uma ferramenta prática para gerenciar suas compras diárias. Com ele, você pode criar, editar e excluir itens da sua lista, assim como acompanhar o histórico delas.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Instalação
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Pré-requisitos
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Node.js (versão 20 ou superior);
+- NPM (versão 10 ou superior);
+- Next (versão 15 ou superior);
+- React (versão 19 ou superior);
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Passos para instalação
 
-## Learn More
+1. Clone o repositório: git clone <https://seu-repositorio.git>
+2. Instale as dependências: `npm install`
+   1. caso tenha erros de dependências, tente o comando `npm install --force`, pois ainda a versão 19 do React não saiu oficialmente
+3. Configure o arquivo **.env** à partir do arquivo **.env.example**
+4. Inicie o banco de dados local: `docker compose -f ".docker/docker-compose.yml" up -d`
+5. Execute as **migrations**: `npm run prisma:migrate:dev`
+6. Inicie a aplicação: `npm run dev`
 
-To learn more about Next.js, take a look at the following resources:
+## Como usar
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Abra o aplicativo em <http://localhost:3000>
+2. Crie uma nova lista ou selecione uma existente
+3. Adicione itens à lista
+4. Edite ou exclua itens conforme necessário
+5. Finalize a sua lista
+6. Veja seu histórico
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Funcionalidades
 
-## Deploy on Vercel
+- Criação e gerenciamento de listas
+- Adição, edição e exclusão de itens
+- Histórico de listas
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Tecnologias Utilizadas
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next](https://nextjs.org/docs)
+- [React](https://react.dev/)
+- [Joy UI](https://mui.com/joy-ui/getting-started/)
+- [Next-Intl](https://next-intl-docs.vercel.app/docs/getting-started)
+- [Prisma](https://www.prisma.io/docs/orm/overview/introduction)
+
+## Contribuição
+
+Contribuições são bem-vindas! Para contribuir:
+
+1. Faça um fork do repositório
+2. Crie uma branch para sua alteração
+3. Envie um pull request
+
+### Créditos
+
+#### Desenvolvedores
+
+- [gabrielcdiniz](https://github.com/gabrielcdiniz)
+
+#### Assets
+
+- [favicon - criado por: iconixar - Flaticon](https://www.flaticon.com/br/icones-gratis/supermercado)
+
+### Licença
+
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo LICENSE para detalhes.
+
+## Contato
+
+Para mais informações, dúvidas ou sugestões, entre em contato:
+
+- [LinkedIn](https://www.linkedin.com/in/gabriel-dinizz/)
+- [GitHub](https://github.com/gabrieldinizdev)

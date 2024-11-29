@@ -33,8 +33,10 @@ export const GlobalStyles = () => (
       },
 
       'html, body': {
-        minHeight: '100vh',
-        minWidth: '100vw',
+        minHeight: '100dvh',
+        minWidth: '100dvw',
+        height: '100dvh',
+        width: '100dvw',
         overflowX: 'hidden',
         overflowY: 'auto',
         margin: 0,
@@ -49,7 +51,7 @@ export const GlobalStyles = () => (
 );
 
 export const CssVarsProvider = ({ children }: CssVarsProviderProps) => (
-  <CssVarsProviderJoy theme={SkyTheme} defaultMode="light">
+  <CssVarsProviderJoy theme={SkyTheme} defaultMode="dark">
     <GlobalStyles />
 
     <CssBaseline />
