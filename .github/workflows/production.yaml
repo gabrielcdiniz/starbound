@@ -1,12 +1,5 @@
 name: Vercel Production Deployment
 
-env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-
-  DATABASE_URL: ${{ secrets.DATABASE_URL }}
-  DIRECTUS_URL: ${{ secrets.DIRECTUS_URL }}
-
 on:
   push:
     branches:
@@ -14,6 +7,7 @@ on:
 
 jobs:
   release:
+    environment: production
     name: Semantic Release
     runs-on: ubuntu-latest
     steps:
@@ -38,6 +32,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.STARBOUND_DEPLOY_TOKEN }}
 
   migrations:
+    environment: production
     needs: [release]
     name: Running Migrations
     runs-on: ubuntu-latest
@@ -53,11 +48,12 @@ jobs:
 
       - name: Run Migrations
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          DIRECT_URL: ${{ secrets.DIRECT_URL }}
+          DATABASE_URL: ${{ env.DATABASE_URL }}
+          DIRECT_URL: ${{ env.DIRECT_URL }}
         run: npm run prisma:deploy
 
   deploy:
+    environment: production
     name: Deployment
     needs: [release, migrations]
     runs-on: ubuntu-latest
