@@ -1,0 +1,70 @@
+name: Vercel Production Deployment
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    name: Semantic Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout project code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 3
+          fetch-tags: true
+          persist-credentials: false
+
+      - name: setup semantic release
+        uses: cycjimmy/semantic-release-action@v4
+        id: semantic
+        with:
+          extra_plugins: |
+            @semantic-release/git@10.0.1
+            @semantic-release/changelog@6.0.3
+            @semantic-release/commit-analyzer@13.0.0
+            @semantic-release/release-notes-generator@14.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.STARBOUND_DEPLOY_TOKEN }}
+
+  migrations:
+    needs: [release]
+    name: Running Migrations
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm ci --force
+
+      - name: Run Migrations
+        run: npm run prisma:deploy
+
+  deploy:
+    name: Deployment
+    needs: [release, migrations]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project Artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
